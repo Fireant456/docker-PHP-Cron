@@ -1,1 +1,1 @@
-* * * * * root echo Please configure cronjobs by mounting a cronfile to /etc/cron.d/docker-cron > /proc/1/fd/1 2>/proc/1/fd/2
+*/5 * * * * root /usr/local/bin/php -q /var/www/html/crons/cron.php > /proc/1/fd/1 2>/proc/1/fd/2

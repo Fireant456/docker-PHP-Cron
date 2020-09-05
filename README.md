@@ -32,17 +32,17 @@ Cron service container with latest offical v7.3 [PHP-FPM](https://hub.docker.com
 
 ## Configuration
 
-See [example directory](https://github.com/Fireant456/docker-PHP-Cron/tree/master/example) for sample config file showing how to use this container with [nginx](https://hub.docker.com/_/nginx/). Container unconfigured will run a placeholder cron job printing a message to console to mount your own cron file.
+See [example directory](https://github.com/Fireant456/docker-PHP-Cron/tree/master/example) for sample config file showing how to use this container with [nginx](https://hub.docker.com/_/nginx/).
 
 ## Quickstart
 
 See [example directory](https://github.com/Fireant456/docker-PHP-Cron/tree/master/example) for the best production use of this docker container.
 
 ```yml
-  cron:
-    image: fireant456/php-cron
+cron:
+  image: fireant456/php-cron
 
-    volumes:
-      # Cronfile
-      - .cron/whmcs-cron:/etc/cron.d/docker-cron
+  volumes:
+    # Website files
+    - ./www:/var/www/html
 ```
