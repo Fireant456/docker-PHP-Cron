@@ -1,4 +1,6 @@
-# PHP FPM Template for WHMCS
+# CRON PHP-FPM Template for WHMCS CRON Requirements
+
+You can find my WHMCS PHP-FPM container [here](https://github.com/Fireant456/docker-WHMCS/).
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/fireant456/php-cron.svg)](https://hub.docker.com/r/fireant456/php-cron/)
 [![Docker Stars](https://img.shields.io/docker/stars/fireant456/php-cron.svg)](https://hub.docker.com/r/fireant456/php-cron/)
@@ -23,9 +25,14 @@ Cron service container with latest offical v7.3 [PHP-FPM](https://hub.docker.com
 - upload_max_filesize = 25M
 - post_max_size = 25M
 
+### Packages
+
+- cron
+- mariadb-server
+
 ## Configuration
 
-See [example directory](https://github.com/Fireant456/docker-PHP-Cron/tree/master/example) for sample config file showing how to use this container with [nginx](https://hub.docker.com/_/nginx/).
+See [example directory](https://github.com/Fireant456/docker-PHP-Cron/tree/master/example) for sample config file showing how to use this container with [nginx](https://hub.docker.com/_/nginx/). Container unconfigured will run a placeholder cron job printing a message to console to mount your own cron file.
 
 ## Quickstart
 
