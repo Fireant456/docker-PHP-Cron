@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  whmcs:
+    image: fireant456/whmcs
+    depends_on:
+      - mysql
+    volumes:
+      # Website files
+      - ./www:/var/www/html
+      # Cronjob directory
+      - ./cron:/etc/cron.d
+      # Uncomment to provide custom PHP configs
+      # - ./php/php.ini:/usr/local/etc/php/php.ini
+      # - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      # - ./php/www.conf:/usr/local/etc/php-fpm.d/www.conf
+    expose:
+      - 9000
+
+  nginx:
+    image: nginx
+    depends_on:
+      - whmcs
+    links:
+      - whmcs
+    volumes:
+      # Website files
+      - ./www:/var/www/html
+      # nginx configuration
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+
+  cron:
+    image: fireant456/php-cron
+    depends_on:
+      - whmcs
+    links:
+      - whmcs
+    volumes:
+      # Website files
+      - ./www:/var/www/html
+      # Cronfile
+      - .cron/whmcs-cron:/etc/cron.d/docker-cron
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: "yourrootpassword"
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./db:/var/lib/mysql:Z
+    ports:
+      - "3306:3306"

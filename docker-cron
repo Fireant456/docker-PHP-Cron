@@ -1,0 +1,1 @@
+* * * * * root echo Please configure cronjobs by mounting a cronfile to /etc/cron.d/docker-cron > /proc/1/fd/1 2>/proc/1/fd/2
