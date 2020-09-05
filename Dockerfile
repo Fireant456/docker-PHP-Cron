@@ -55,7 +55,6 @@ RUN tar xvzfC /tmp/ioncube_loaders_lin_x86-64.tar.gz /tmp/ && \
 # Cronfile install
 COPY docker-cron /etc/cron.d/docker-cron
 RUN chmod 0744 /etc/cron.d/docker-cron
-RUN crontab /etc/cron.d/docker-cron
 
 # Run Cron on container startup
 CMD ["cron", "-f"]
